@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Extra Assistance</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Extra Assistance</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="find-shelter.html">Find a Shelter</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Additional Resources</h2>
+      <ul>
+        <li>
+          <h3>National Domestic Violence Hotline</h3>
+          <p>Phone: 1-800-799-7233</p>
+          <p>Website: <a href="https://www.thehotline.org" target="_blank">thehotline.org</a></p>
+          <p>A confidential hotline offering support and resources 24/7.</p>
+        </li>
+        <li>
+          <h3>Women’s Health Centers</h3>
+          <p>Find local health centers offering free or low-cost services.</p>
+          <p>Website: <a href="https://www.womenshealth.gov" target="_blank">womenshealth.gov</a></p>
+        </li>
+        <li>
+          <h3>Legal Aid for Women</h3>
+          <p>Provides legal assistance for women facing domestic issues.</p>
+          <p>Website: <a href="https://www.lsc.gov" target="_blank">lsc.gov</a></p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Women’s Shelter Finder. All rights reserved.</p>
+  </footer>
+</body>
+</html>

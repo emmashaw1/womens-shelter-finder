@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find a Shelter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Find a Shelter</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="extra-assistance.html">Extra Assistance</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Select Your State</h2>
+      <ul id="states-list" class="states-list"></ul>
+    </section>
+
+    <section id="shelter-list-section" style="display:none;">
+      <h2 id="state-name"></h2>
+      <ul id="shelter-list" class="shelter-list"></ul>
+      <button id="back-to-states">Back to States</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Women’s Shelter Finder. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sample shelter data for demo purposes
+    const shelterData = {
+      "Georgia": [
+        {
+          name: "Safe Haven Shelter",
+          website: "https://safehaven.org",
+          email: "contact@safehaven.org",
+          phone: "404-555-1234",
+          summary: "Provides emergency housing and counseling for women and children."
+        },
+        {
+          name: "Hope Women's Shelter",
+          website: "https://hopews.org",
+          email: "info@hopews.org",
+          phone: "678-555-9876",
+          summary: "Offers temporary shelter and support services."
+        }
+      ],
+      "California": [
+        {
+          name: "Sunshine Shelter",
+          website: "https://sunshineshelter.org",
+          email: "help@sunshineshelter.org",
+          phone: "213-555-6789",
+          summary: "Safe housing with programs for rebuilding lives."
+        }
+      ],
+      "New York": [
+        {
+          name: "Liberty Women's Shelter",
+          website: "https://libertyshelterny.org",
+          email: "contact@libertyshelterny.org",
+          phone: "212-555-4321",
+          summary: "Comprehensive support and housing services."
+        }
+      ]
+      // Add more states & shelters here...
+    };
+
+    const statesList = document.getElementById("states-list");
+    const shelterListSection = document.getElementById("shelter-list-section");
+    const shelterList = document.getElementById("shelter-list");
+    const stateNameHeading = document.getElementById("state-name");
+    const backToStatesBtn = document.getElementById("back-to-states");
+
+    // List of all states (just keys of shelterData for now)
+    const states = Object.keys(shelterData).sort();
+
+    // Show all states
+    states.forEach(state => {
+      const li = document.createElement("li");
+      li.textContent = state;
+      li.classList.add("state-item");
+      li.style.cursor = "pointer";
+      li.addEventListener("click", () => showShelters(state));
+      statesList.appendChild(li);
+    });
+
+    function showShelters(state) {
+      stateNameHeading.textContent = `Shelters in ${state}`;
+      shelterList.innerHTML = "";
+
+      // Sort shelters A-Z by name
+      const shelters = shelterData[state].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      shelters.forEach(shelter => {
+        const li = document.createElement("li");
+        li.classList.add("shelter-item");
+
+        li.innerHTML = `
+          <h3>${shelter.name}</h3>
+          <p><strong>Website:</strong> <a href="${shelter.website}" target="_blank">${shelter.website}</a></p>
+          <p><strong>Email:</strong> <a href="mailto:${shelter.email}">${shelter.email}</a></p>
+          <p><strong>Phone:</strong> <a href="tel:${shelter.phone}">${shelter.phone}</a></p>
+          <p>${shelter.summary}</p>
+        `;
+
+        shelterList.appendChild(li);
+      });
+
+      // Hide states list and show shelter list section
+      statesList.parentElement.style.display = "none";
+      shelterListSection.style.display = "block";
+    }
+
+    backToStatesBtn.addEventListener("click", () => {
+      shelterListSection.style.display = "none";
+      statesList.parentElement.style.display = "block";
+    });
+  </script>
+</body>
+</html>
